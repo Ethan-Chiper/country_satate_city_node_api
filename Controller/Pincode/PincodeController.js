@@ -50,7 +50,11 @@ function controller() {
 				);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to update pincode', err);
+				responder.sendFailureMessage(
+					res,
+					'Failed to update pincode',
+					err
+				);
 			});
 	};
 	this.updatePincode = (res, data) => {
@@ -93,7 +97,8 @@ function controller() {
 					.catch((err) => {
 						responder.sendFailureMessage(
 							res,
-							'Failed to update pincode',err
+							'Failed to update pincode',
+							err
 						);
 					});
 			});
@@ -115,7 +120,11 @@ function controller() {
 				);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to delete pincode', err);
+				responder.sendFailureMessage(
+					res,
+					'Failed to delete pincode',
+					err
+				);
 			});
 	};
 	this.listPincode = (res) => {
@@ -125,7 +134,11 @@ function controller() {
 				responder.sendSuccessData(res, 'pincode list are', data);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to get pincode lsit',err);
+				responder.sendFailureMessage(
+					res,
+					'Failed to get pincode lsit',
+					err
+				);
 			});
 	};
 }

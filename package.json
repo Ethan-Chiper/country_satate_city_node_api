@@ -30,8 +30,10 @@
 		"winston": "^3.8.2"
 	},
 	"lint-staged": {
-		"src/**/*.{js,json}": "prepare --write",
-		"src/**/*.js": "eslint"
+		"*.{css,less,scss,html,json,jsx,js}": [
+			"prettier --write ."
+		],
+		"*.js": "eslint --fix"
 	},
 	"devDependencies": {
 		"eslint": "^8.34.0",
