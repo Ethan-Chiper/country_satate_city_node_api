@@ -7,23 +7,23 @@ const cityValidation = require('./cityValidation');
 const cityController = require('./CityController');
 
 app.post('/cityCreate', cityValidation.cityValidation(), (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.send(errors.errors[0].msg);
-    }
-    return cityController.createCity(res, req.body);
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		return res.send(errors.errors[0].msg);
+	}
+	return cityController.createCity(res, req.body);
 });
 
 app.patch('/cityUpdate', (req, res) => {
-    return cityController.updateCity(res, req.body);
+	return cityController.updateCity(res, req.body);
 });
 
 app.delete('/cityDelete', (req, res) => {
-    return cityController.deleteCity(res, req.body);
+	return cityController.deleteCity(res, req.body);
 });
 
 app.get('/cityList', (req, res) => {
-    return cityController.listCity(res, req.body);
+	return cityController.listCity(res, req.body);
 });
 
 module.exports = app;

@@ -3,6 +3,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 const env = process.env;
 
-module.exports ={
-    DB_URL : env.DB_URL_PINCODE  
+module.exports = {
+	DB_URL: env.DB_URL_PINCODE
 };

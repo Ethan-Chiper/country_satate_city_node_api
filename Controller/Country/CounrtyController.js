@@ -1,8 +1,14 @@
 /* eslint-disable no-undef */
 const countryCodes = require('country-codes-list');
-const countryIsoCode = countryCodes.customList('countryNameEn','{countryCode}');
-const countryCallingCode = countryCodes.customList('countryNameEn','{countryCallingCode}');
-const getCountryISO3 = require('country-iso-2-to-3'); 
+const countryIsoCode = countryCodes.customList(
+	'countryNameEn',
+	'{countryCode}'
+);
+const countryCallingCode = countryCodes.customList(
+	'countryNameEn',
+	'{countryCallingCode}'
+);
+const getCountryISO3 = require('country-iso-2-to-3');
 const countryModel = require('../../Database/CountrySchema').getCountryModel();
 const utils = require('../../Helpers/Utils').default;
 const responder = require('../../Helpers/Responder');
@@ -10,8 +16,8 @@ const responder = require('../../Helpers/Responder');
 function controller() {
 	this.createCountry = (res, data) => {
 		let countryCreate = {};
-		(countryCreate['country_id'] = utils.getNanoId());
-			(countryCreate['country_Name'] = data.countryName);
+		countryCreate['country_id'] = utils.getNanoId();
+		countryCreate['country_Name'] = data.countryName;
 		countryCreate['isoCode2'] = countryIsoCode[data.countryName];
 		countryCreate['isoCode3'] = getCountryISO3(countryCreate.isoCode2);
 		countryCreate['countryCodes'] = countryCallingCode[data.countryName];
@@ -43,7 +49,11 @@ function controller() {
 				);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to find country',err);
+				responder.sendFailureMessage(
+					res,
+					'Failed to find country',
+					err
+				);
 			});
 	};
 
@@ -62,20 +72,21 @@ function controller() {
 				);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to update country',err);
+				responder.sendFailureMessage(
+					res,
+					'Failed to update country',
+					err
+				);
 			});
 	};
 	this.updateCountry2 = (_res, data) => {
-		countryModel.findOne(
-			{ country_Name: data.country_Name },
-			() => {
-				document['status'] = deactivated;
-				if (data.status !== activated) {
-					document['status'] = activated;
-					document.save();
-				}
+		countryModel.findOne({ country_Name: data.country_Name }, () => {
+			document['status'] = deactivated;
+			if (data.status !== activated) {
+				document['status'] = activated;
+				document.save();
 			}
-		);
+		});
 	};
 
 	this.deleteCountry = (res, data) => {
@@ -108,7 +119,11 @@ function controller() {
 				responder.sendSuccessData(res, 'the country list are', data);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to list country', err);
+				responder.sendFailureMessage(
+					res,
+					'Failed to list country',
+					err
+				);
 			});
 	};
 }

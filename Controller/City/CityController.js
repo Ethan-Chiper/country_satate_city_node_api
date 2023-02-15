@@ -66,11 +66,15 @@ function controller() {
 					);
 				})
 				.catch((err) => {
-					responder.sendFailureMessage(res, 'Failed to update city',err);
+					responder.sendFailureMessage(
+						res,
+						'Failed to update city',
+						err
+					);
 				});
 		});
 	};
-	
+
 	this.deleteCity = (res, data) => {
 		cityModel
 			.findOneAndRemove(data)
@@ -87,7 +91,7 @@ function controller() {
 				);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to delete city',err);
+				responder.sendFailureMessage(res, 'Failed to delete city', err);
 			});
 	};
 

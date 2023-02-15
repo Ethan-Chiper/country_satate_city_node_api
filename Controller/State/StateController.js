@@ -24,7 +24,11 @@ function controller() {
 				);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to create state',err);
+				responder.sendFailureMessage(
+					res,
+					'Failed to create state',
+					err
+				);
 			});
 	};
 	this.getState = (res, data) => {
@@ -34,7 +38,7 @@ function controller() {
 				responder.sendSuccessData(res, 'find state successfully', read);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to find state',err);
+				responder.sendFailureMessage(res, 'Failed to find state', err);
 			});
 	};
 	this.updateState = (res, data) => {
@@ -76,7 +80,11 @@ function controller() {
 				);
 			})
 			.catch((err) => {
-				responder.sendFailureMessage(res, 'Failed to delete state',err);
+				responder.sendFailureMessage(
+					res,
+					'Failed to delete state',
+					err
+				);
 			});
 	};
 	this.listState = (res, data) => {

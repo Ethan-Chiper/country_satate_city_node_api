@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const app = require('express')();
 let helmet = require('helmet');
 app.use(helmet.hidePoweredBy());
